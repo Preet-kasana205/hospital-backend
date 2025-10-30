@@ -19,9 +19,13 @@ exports.registerPatient = async (req, res) => {
     // 3. Hash password
     const salt = await bcrypt.genSalt(10);
     patient.password = await bcrypt.hash(password, salt);
+   // 4. Save to DB
+     await patient.save();
+     console.log("✅ Patient saved:", patient);
 
-    // 4. Save to DB
-    await patient.save();
+
+
+
 
     // 5. Return JWT (so they are auto-logged in)
     const payload = {
