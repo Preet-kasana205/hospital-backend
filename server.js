@@ -21,6 +21,10 @@ app.use("/api/patients", require("./routes/patientroutes"));
 app.use("/api/doctors", require("./routes/doctorroutes"));
 app.use("/api/appointments", require("./routes/appointmentroutes"));
 
+app.get("/", (req, res) => {
+    res.send("Healthcare Appointment Scheduling API is running");
+});
+
 // --- Server ---
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
