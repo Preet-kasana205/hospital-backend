@@ -27,9 +27,9 @@ module.exports = function (req, res, next) {
 
     const decoded = jwt.verify(tokenValue, process.env.JWT_SECRET);
 
-    // Add user from payload to the request object
-    // The payload should contain an object { user: { id: '...', role: '...' } }
-    req.user = decoded.user;
+    
+    req.user = decoded; // because token payload is { id, role }
+
     next();
   } catch (error) {
     res.status(401).json({ message: "Token is not valid" });
