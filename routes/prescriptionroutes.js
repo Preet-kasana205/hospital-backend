@@ -6,7 +6,7 @@ const {
   getPrescriptionByPatient,
   deletePrescription
 } = require("../controllers/prescriptioncontroller");
-const auth = require("../middleware/auth");
+const auth = require("../middlewares/auth");
 
 // create new prescription (doctor)
 router.post("/", auth, createPrescription);
