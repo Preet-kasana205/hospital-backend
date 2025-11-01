@@ -1,8 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const { addPrescription, getPrescriptions } = require("../controllers/prescriptioncontroller");
+const {
+  createPrescription,
+  getAllPrescriptions,
+  getPrescriptionByPatient,
+  deletePrescription
+} = require("../controllers/prescriptionController");
+const auth = require("../middlewares/auth");
 
-router.post("/add", addPrescription);
-router.get("/", getPrescriptions);
+// create new prescription (doctor)
+router.post("/", auth, createPrescription);
+
+// get all prescriptions (admin)
+router.get("/", auth, getAllPrescriptions);
+
+// get prescriptions for one patient (doctor/patient)
+router.get("/:patientId", auth, getPrescriptionByPatient);
+
+// delete prescription (admin)
+router.delete("/:id", auth, deletePrescription);
 
 module.exports = router;

@@ -32,10 +32,10 @@ exports.registerDoctor = async (req, res) => {
 
     // 5. Return JWT
     const payload = {
-      user: {
+      
         id: doctor.id,
         role: "doctor",
-      },
+      
     };
 
     jwt.sign(
@@ -72,10 +72,10 @@ exports.loginDoctor = async (req, res) => {
 
     // 3. Return JWT
     const payload = {
-      user: {
+      
         id: doctor.id,
         role: "doctor",
-      },
+      
     };
 
     jwt.sign(
