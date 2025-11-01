@@ -5,7 +5,7 @@ const {
   getAllPrescriptions,
   getPrescriptionByPatient,
   deletePrescription
-} = require("../controllers/prescriptionController");
+} = require("../controllers/prescriptioncontroller");
 const auth = require("../middlewares/auth");
 
 // create new prescription (doctor)
