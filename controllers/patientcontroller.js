@@ -27,23 +27,20 @@ exports.registerPatient = async (req, res) => {
 
 
 
+    
     // 5. Return JWT (so they are auto-logged in)
-    const payload = {
-      user: {
-        id: patient.id,
-        role: "patient",
-      },
-    };
+const payload = { id: patient.id, role: "patient" };
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "5h" }, // Token expires in 5 hours
-      (err, token) => {
-        if (err) throw err;
-        res.status(201).json({ token, message: "Patient registered successfully" });
-      }
-    );
+jwt.sign(
+  payload,
+  process.env.JWT_SECRET,
+  { expiresIn: "5h" },
+  (err, token) => {
+    if (err) throw err;
+    res.status(201).json({ token, message: "Patient registered successfully" });
+  }
+);
+
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: "Server error" });
@@ -68,22 +65,18 @@ exports.loginPatient = async (req, res) => {
     }
 
     // 3. Return JWT
-    const payload = {
-      user: {
-        id: patient.id,
-        role: "patient",
-      },
-    };
+const payload = { id: patient.id, role: "patient" };
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "5h" },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token, message: "Login successful" });
-      }
-    );
+jwt.sign(
+  payload,
+  process.env.JWT_SECRET,
+  { expiresIn: "5h" },
+  (err, token) => {
+    if (err) throw err;
+    res.json({ token, message: "Login successful" });
+  }
+);
+
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: "Server error" });
