@@ -22,6 +22,8 @@ app.use("/api/doctors", require("./routes/doctorroutes"));
 app.use("/api/appointments", require("./routes/appointmentroutes"));
 app.use("/api/billing", require("./routes/billingroutes"));
 app.use("/api/prescription", require("./routes/prescriptionroutes"));
+app.use("/api/admin", require("./routes/adminroutes"));
+
 
 app.get("/", (req, res) => {
     res.send("Healthcare Appointment Scheduling API is running");
