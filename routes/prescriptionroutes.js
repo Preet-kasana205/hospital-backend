@@ -1,5 +1,5 @@
 const express = require("express");
-const { createPrescription, getPatientPrescriptions } = require("../controllers/prescriptionController");
+const { createPrescription, getPatientPrescriptions } = require("../controllers/prescriptioncontroller");
 const auth = require("../middleware/auth");
 
 const router = express.Router();
