@@ -28,28 +28,8 @@ const patientSchema = new mongoose.Schema({
     type: String,
   },
 
-  // 👇 NEW MEDICAL FIELDS 👇
-  BP: {
-    type: String, // Example: "120/80"
-  },
-  heartBeat: {
-    type: Number, // Example: 72
-  },
-  glucose: {
-    type: Number, // mg/dL
-  },
-  insulin: {
-    type: Number, // μU/mL
-  },
-  height: {
-    type: Number, // in cm
-  },
-  weight: {
-    type: Number, // in kg
-  },
-  majorDiseasesOrSurgeries: {
-    type: String, // e.g., "Diabetes, Heart Surgery (2022)"
-  },
+  
+  
 
   registeredAt: {
     type: Date,

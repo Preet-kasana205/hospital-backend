@@ -1,27 +1,45 @@
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
-  doctorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Doctor",
-    required: true,
-  },
   patientId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Patient",
     required: true,
   },
-  // Use a single Date object. This stores both date and time.
-  // The client should send an ISO string (e.g., "2025-10-30T14:30:00.000Z")
-  date: {
+  doctorId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Doctor",
+    required: true,
+  },
+  patientName: {
+    type: String,
+    required: true,
+  },
+  contact: {
+    type: String,
+    required: true,
+  },
+  appointmentDate: {
     type: Date,
     required: true,
   },
-  status: {
+  appointmentTime: {
     type: String,
-    // Use enum to restrict possible values
-    enum: ["Scheduled", "Completed", "Cancelled"],
-    default: "Scheduled",
+    required: true,
+  },
+  reasonForVisit: {
+    type: String,
+    default: "General Consultation",
+  },
+  paymentStatus: {
+    type: String,
+    enum: ["Pending", "Paid"],
+    default: "Pending",
+  },
+  paymentMode: {
+    type: String,
+    enum: ["Online", "Cash", "Insurance", "Not Selected"],
+    default: "Not Selected",
   },
   createdAt: {
     type: Date,
@@ -30,4 +48,4 @@ const appointmentSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Appointment", appointmentSchema);
-module.exports = mongoose.model("Appointment", appointmentSchema);
+
