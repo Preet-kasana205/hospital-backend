@@ -21,7 +21,7 @@ app.use("/api/patients", require("./routes/patientroutes"));
 app.use("/api/doctors", require("./routes/doctorroutes"));
 app.use("/api/appointments", require("./routes/appointmentroutes"));
 app.use("/api/billing", require("./routes/billingroutes"));
-app.use("/api/prescription", require("./routes/prescriptionroutes"));
+app.use("/api/prescriptions", require("./routes/prescriptionroutes"));
 app.use("/api/admin", require("./routes/adminroutes"));
 
 
