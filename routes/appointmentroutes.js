@@ -1,17 +1,21 @@
-
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth");
 const {
   createAppointment,
   getMyAppointments,
   updatePaymentStatus,
   getAllAppointments
-} = require("../controllers/appointmentscontroller");
-const authMiddleware = require("../middleware/authMiddleware");
+} = require("../controllers/appointmentController");
 
-router.post("/create", authMiddleware, createAppointment);
-router.get("/myappointments", authMiddleware, getMyAppointments);
-router.get("/", authMiddleware, getAllAppointments); // ✅ new route
-router.put("/:id/payment", authMiddleware, updatePaymentStatus);
+// Patient books appointment
+router.post("/", auth, createAppointment);
+
+// Patient views their appointments
+router.get("/myappointments", auth, getMyAppointments);
+router.get("/", authMiddleware, getAllAppointments);
+
+// Admin/Doctor updates payment status
+router.put("/:id/payment", auth, updatePaymentStatus);
 
 module.exports = router;
